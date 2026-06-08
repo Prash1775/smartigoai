@@ -1,0 +1,129 @@
+smartgo_ai/
+|-- ARCHITECTURE.md
+|-- FIREBASE_SETUP.md
+|-- README.md
+|-- analysis_options.yaml
+|-- pubspec.yaml
+|-- pubspec.lock
+|-- lib/
+|   |-- main.dart
+|   |-- config/
+|   |   |-- firebase_options.dart
+|   |   |-- routes/
+|   |   |   `-- app_router.dart
+|   |   `-- theme/
+|   |       `-- app_theme.dart
+|   |-- core/
+|   |   |-- constants/
+|   |   `-- providers/
+|   |       |-- app_provider.dart
+|   |       `-- auth_provider.dart
+|   |-- models/
+|   |   `-- user_model.dart
+|   |-- services/
+|   |   |-- auth_service.dart
+|   |   |-- firestore_service.dart
+|   |   |-- gemini_service.dart
+|   |   `-- youtube_service.dart
+|   `-- features/
+|       |-- ai_coach/
+|       |   |-- agents/
+|       |   |   `-- agent_definitions.dart
+|       |   |-- models/
+|       |   |   `-- ai_message.dart
+|       |   |-- providers/
+|       |   |-- repositories/
+|       |   `-- screens/
+|       |       `-- ai_coach_screen.dart
+|       |-- auth/
+|       |   `-- screens/
+|       |       |-- login_screen.dart
+|       |       `-- signup_screen.dart
+|       |-- daily_quiz/
+|       |   |-- repositories/
+|       |   |   `-- daily_quiz_repository.dart
+|       |   `-- screens/
+|       |       `-- daily_quiz_screen.dart
+|       |-- dashboard/
+|       |   |-- screens/
+|       |   |   `-- dashboard_screen.dart
+|       |   `-- widgets/
+|       |       |-- readiness_score_card.dart
+|       |       `-- recent_test_score_card.dart
+|       |-- exam_selection/
+|       |   `-- screens/
+|       |       `-- exam_selection_screen.dart
+|       |-- learn/
+|       |   `-- screens/
+|       |       |-- learn_screen.dart
+|       |       `-- syllabus_screen.dart
+|       |-- learning_analytics/
+|       |   |-- models/
+|       |   |   |-- daily_report.dart
+|       |   |   |-- flashcard.dart
+|       |   |   `-- generated_note.dart
+|       |   |-- providers/
+|       |   |   `-- learning_analytics_provider.dart
+|       |   |-- repositories/
+|       |   |   `-- learning_analytics_repository.dart
+|       |   `-- screens/
+|       |       `-- learning_analytics_screen.dart
+|       |-- onboarding/
+|       |   `-- screens/
+|       |       |-- first_time_exam_selection_screen.dart
+|       |       |-- gmat_onboarding_screen.dart
+|       |       |-- gre_onboarding_screen.dart
+|       |       |-- ielts_onboarding_screen.dart
+|       |       `-- study_plan_generation_screen.dart
+|       |-- practice/
+|       |   |-- models/
+|       |   |   `-- practice_question.dart
+|       |   |-- screens/
+|       |   |   |-- practice_quiz_screen.dart
+|       |   |   |-- practice_results_screen.dart
+|       |   |   `-- practice_screen.dart
+|       |   `-- services/
+|       |       `-- practice_service.dart
+|       |-- profile/
+|       |   `-- screens/
+|       |       `-- profile_screen.dart
+|       |-- progress/
+|       |   `-- screens/
+|       |       `-- progress_screen.dart
+|       |-- splash/
+|       |   `-- screens/
+|       |       `-- splash_screen.dart
+|       |-- sprint4/
+|       |   |-- models/
+|       |   |   |-- achievement.dart
+|       |   |   |-- essay_evaluation.dart
+|       |   |   |-- leaderboard_entry.dart
+|       |   |   `-- mock_result.dart
+|       |   |-- providers/
+|       |   |   `-- sprint4_provider.dart
+|       |   |-- repositories/
+|       |   |   `-- sprint4_repository.dart
+|       |   `-- screens/
+|       |       `-- sprint4_screen.dart
+|       |-- sprint5/
+|       |   |-- models/
+|       |   |   |-- career_roadmap.dart
+|       |   |   |-- comment.dart
+|       |   |   |-- group_message.dart
+|       |   |   `-- interview_session.dart
+|       |   |-- providers/
+|       |   |   `-- sprint5_provider.dart
+|       |   |-- repositories/
+|       |   |   `-- sprint5_repository.dart
+|       |   `-- screens/
+|       |       `-- sprint5_screen.dart
+|       `-- study_planner/
+|           |-- models/
+|           |   |-- daily_task.dart
+|           |   `-- study_plan.dart
+|           |-- providers/
+|           |   `-- study_planner_provider.dart
+|           |-- repositories/
+|           |   `-- study_planner_repository.dart
+|           `-- screens/
+|               `-- study_planner_screen.dart

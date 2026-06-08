@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="smartgo_ai">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>smartgo_ai</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script>
+    var recognition;
+    var finalTranscript = '';
+    
+    window.startSpeechRecognition = function(onResult, onError, onEnd) {
+      window.stopSpeechRecognition();
+      
+      var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        if (onError) onError("Speech recognition not supported in this browser.");
+        return;
+      }
+      
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+      finalTranscript = '';
+      
+      recognition.onresult = function(event) {
+        var interimTranscript = '';
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript + ' ';
+          } else {
+            interimTranscript += event.results[i][0].transcript;
+          }
+        }
+        var fullText = finalTranscript + interimTranscript;
+        if (onResult) {
+          onResult(fullText);
+        }
+      };
+      
+      recognition.onerror = function(event) {
+        if (onError) onError(event.error);
+      };
+      
+      recognition.onend = function() {
+        if (onEnd) onEnd();
+      };
+      
+      recognition.start();
+    };
+    
+    window.stopSpeechRecognition = function() {
+      if (recognition) {
+        recognition.stop();
+        recognition = null;
+      }
+    };
+    
+    var synthUtterance;
+    window.speakText = function(text, rate) {
+      window.stopSpeaking();
+      if (!window.speechSynthesis) {
+        console.error("Speech synthesis not supported.");
+        return;
+      }
+      synthUtterance = new SpeechSynthesisUtterance(text);
+      synthUtterance.rate = rate || 1.0;
+      synthUtterance.lang = 'en-US';
+      
+      var voices = window.speechSynthesis.getVoices();
+      var englishVoice = voices.find(function(voice) {
+        return voice.lang.indexOf('en') === 0;
+      });
+      if (englishVoice) {
+        synthUtterance.voice = englishVoice;
+      }
+      
+      window.speechSynthesis.speak(synthUtterance);
+    };
+    
+    window.stopSpeaking = function() {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+    
+    window.pauseSpeaking = function() {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.pause();
+      }
+    };
+    
+    window.resumeSpeaking = function() {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.resume();
+      }
+    };
+  </script>
+
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
